@@ -1,17 +1,24 @@
 "use strict";
 
-const password = prompt("cal é a clave para adiviñar?");
-const attempt = Number(prompt(`Número de intentos?`));
+function bomb(attempt, password) {
+  for (let i = 1; i <= attempt; i++) {
+    let key = prompt(
+      `Introduce a clave. Tes ${attempt + 1 - i} oportunidades:`
+    );
+    if (key === password) {
+      console.log(`NORABOA`);
+      break;
+    } else if (key !== password && i < attempt) {
+      continue;
+    } else {
+      console.log("Non adivinaches o código.volve comezar se queres");
 
-for (let i = 1; i <= attempt; i++) {
-  let key = prompt(`Introduce a clave. Tes ${attempt + 1 - i} oportunidades:`);
-  if (key === password) {
-    console.log(`NORABOA`);
-    break;
-  } else if (key !== password && i < attempt) {
-    continue;
-  } else {
-    console.log("Non adivinaches o código.volve comezar");
+      if (confirm("desexas seguir xogando?")) {
+        bomb(attempt, password);
+      }
+    }
   }
+  console.log("fin da partida");
 }
-console.log("fin");
+
+bomb(3, "derf");

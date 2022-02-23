@@ -3,10 +3,7 @@ function xogada(minimo, maximo) {
   let numero = Math.floor(Math.random() * (maximo - minimo + 1) + minimo);
   return numero;
 }
-const pedra = 0;
-const papel = 1;
-const tesoiras = 2;
-
+/
 const trick = ["pedra", "papel", "tesoira"];
 
 let userCount = new Array(0, 0, 0);
@@ -21,7 +18,7 @@ while (userCount[0] < 3 && pcCount[0] < 3) {
   alert(
     "elixes " + trick[userTrick] + ".O ordenador escolleu " + trick[pctrick]
   );
-
+  console.log(userTrick + pctrick);
   if (
     (userTrick === 0 && pctrick === 2) ||
     (userTrick === 1 && pctrick === 0) ||
